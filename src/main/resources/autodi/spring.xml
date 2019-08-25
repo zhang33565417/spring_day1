@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--管理DAO-->
+    <bean id="aaaa" class="autodi.DeptDAOImpl"></bean>
+
+    <bean id="bbbb" class="autodi.DeptDAOImplNew"></bean>
+
+
+    <!--管理service
+        autowire:用来给组件中成员变量自动赋值
+                byName: 根据bean的名字进行赋值  工厂中组件名字与成员变量名一致自动赋值  找不到不赋值
+                byType: 根据bean的类型进行赋值  根据类中成员变量的类型去工厂中查找 类型一致自动赋值 不一致不赋值
+                   注意:当工厂中存在两个类型一致时byType会报错
+    -->
+    <bean id="deptService" class="autodi.DeptServiceImpl" autowire="byType"></bean>
+
+</beans>

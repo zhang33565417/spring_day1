@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <!--创建DAO组件对象-->
+    <bean id="empDAO" class="cdi.EmpDAOImpl">
+        <!--使用构造方法形式为成员变量赋值
+            index:代表当前赋值的属性在构造方法参数中的索引|下标  从0开始
+            name: 用来书写赋值成员变量名
+        -->
+        <constructor-arg index="0" name="name" value="小黑"/>
+        <constructor-arg index="1" name="age" value="23"/>
+        <constructor-arg index="2" name="qqs">
+            <list>
+                <value>小明</value>
+                <value>小张</value>
+                <value>小王</value>
+            </list>
+        </constructor-arg>
+        <constructor-arg index="3" name="maps">
+            <map>
+                <entry key="aaa" value="xiaohei"></entry>
+                <entry key="bbb" value="xiaosan"></entry>
+            </map>
+        </constructor-arg>
+        <!--注意:注入构造注入不能自己注入自己-->
+        <constructor-arg index="4" name="empDAO" ref="empDAO"/>
+
+
+    </bean>
+
+</beans>

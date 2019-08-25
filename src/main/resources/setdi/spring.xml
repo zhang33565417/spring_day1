@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+
+    <!--管理DAO组件-->
+    <bean id="clazzDAO" class="setdi.ClazzDAOImpl">
+        <!--注入八种基本类型+string+日期类型时使用value属性进行赋值-->
+        <property name="name" value="小黑"/>
+        <property name="age" value="21"/>
+        <property name="price" value="23.33"/>
+        <property name="salary" value="12.12222"/>
+        <property name="sex" value="false"/>
+        <!--日期格式默认只能是 yyyy/MM/dd HH:mm:ss -->
+        <property name="bir" value="2012/12/12 12:23:59"/>
+        <!--注入list集合-->
+        <property name="lists">
+            <list>
+                <value>小黑</value>
+                <value>小明</value>
+                <value>小三</value>
+            </list>
+        </property>
+        <!--注入数组-->
+        <property name="qqs">
+            <array>
+                <value>111</value>
+                <value>222</value>
+                <value>333</value>
+            </array>
+        </property>
+        <!--注入引用类型-->
+        <property name="clazzDAO" ref="clazzDAO" />
+        <property name="clazzDAOs">
+            <list>
+                <ref bean="clazzDAO"/>
+                <ref bean="clazzDAO"/>
+                <ref bean="clazzDAO"/>
+            </list>
+        </property>
+        <property name="map">
+            <map>
+                <entry key="aaa" value="xiaoming"></entry>
+                <entry key="bbb" value="xiaohong"></entry>
+                <entry key="ccc" value="xiaohei"></entry>
+                <entry key="aaa" value="xiaohei"></entry>
+            </map>
+        </property>
+        <property name="properties">
+            <props>
+                <prop key="driver">com.mysql.jdbc.Driver</prop>
+                <prop key="url">jdbc:mysql://localhost:3306/test</prop>
+                <prop key="username">root</prop>
+                <prop key="password">root</prop>
+            </props>
+        </property>
+    </bean>
+</beans>
